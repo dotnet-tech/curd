@@ -1,0 +1,105 @@
+<div class="row">
+    <div class="col-md-12 mx-auto">
+        <form [formGroup]="tenantForm" (ngSubmit)="insertTenant()">
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <label for="inputFirstname">First name</label>
+                    <input type="text" class="form-control" placeholder="First name" formControlName="firstname"
+                        [ngClass]="{'is-invalid':tenantForm.get('firstname').errors  && tenantForm.get('firstname').touched}">
+                    <div class="invalid-feedback">
+                        <div>First Name is required</div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <label for="inputLastname">Last name</label>
+                    <input type="text" class="form-control" placeholder="Last name" formControlName="lastname"
+                        [ngClass]="{'is-invalid':tenantForm.get('lastname').errors && tenantForm.get('lastname').touched}">
+                    <div class="invalid-feedback">
+                        <div>Last Name is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <label for="inputAddressLine1">Primary Email</label>
+                    <input type="email" class="form-control" placeholder="Primary Email" formControlName="primaryemail"
+                        [ngClass]="{'is-invalid': tenantForm.get('primaryemail').errors && tenantForm.get('primaryemail').touched || tenantForm.get('primaryemail').hasError('pattern')}">
+                    <div class="invalid-feedback" *ngIf="tenantForm.get('primaryemail').touched && tenantForm.get('primaryemail').hasError('required') ">
+                        <div>Primary Email is required</div>
+                    </div>
+                    <div class="invalid-feedback" *ngIf="tenantForm.get('primaryemail').touched && tenantForm.get('primaryemail').hasError('pattern') ">
+                        <div>Email must be a valid email address</div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <label for="inputAddressLine2">Secondary Email</label>
+                    <input type="text" class="form-control" placeholder="Primary Email" formControlName="secondaryemail">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <label for="inputContactNumber">Contact Number</label>
+                    <input type="number" class="form-control" placeholder="Contact Number" formControlName="contactnumber"
+                        [ngClass]="{'is-invalid':tenantForm.get('contactnumber').errors && tenantForm.get('contactnumber').touched}">
+                    <div class="invalid-feedback" *ngFor="let validation of tenant_validation_messages.contactnumber">
+                        <div *ngIf="tenantForm.get('contactnumber').hasError(validation.type) && (tenantForm.get('contactnumber').dirty || tenantForm.get('contactnumber').touched)">
+                            {{validation.message}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <label for="inputWebsite">Website</label>
+                    <input type="text" class="form-control" placeholder="Website" formControlName="website" [ngClass]="{'is-invalid':tenantForm.get('website').errors && (tenantForm.get('website').dirty || tenantForm.get('website').touched) }">
+                    <div class="invalid-feedback" *ngFor="let validation of tenant_validation_messages.website">
+                        <div *ngIf="tenantForm.get('website').hasError(validation.type) && (tenantForm.get('website').dirty || tenantForm.get('website').touched)">
+                            {{validation.message}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <label for="inputContactNumber">Number of User</label>
+                    <input type="number" class="form-control" placeholder="No.of User" formControlName="numberofuser"
+                        [ngClass]="{'is-invalid':tenantForm.get('numberofuser').errors && (tenantForm.get('numberofuser').dirty || tenantForm.get('website').touched) }">
+                    <div class="invalid-feedback" *ngFor="let validation of tenant_validation_messages.numberofuser">
+                        <div *ngIf="tenantForm.get('numberofuser').hasError(validation.type) && (tenantForm.get('numberofuser').dirty || tenantForm.get('numberofuser').touched)">
+                            {{validation.message}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <label for="inputWebsite">Number of Project </label>
+                    <input type="number" class="form-control" placeholder="No.of Project" formControlName="numberofproject"
+                        [ngClass]="{'is-invalid':tenantForm.get('numberofproject').errors && (tenantForm.get('numberofproject').dirty || tenantForm.get('numberofproject').touched) }">
+                    <div class="invalid-feedback" *ngFor="let validation of tenant_validation_messages.numberofproject">
+                        <div *ngIf="tenantForm.get('numberofproject').hasError(validation.type) && (tenantForm.get('numberofproject').dirty || tenantForm.get('numberofproject').touched)">
+                            {{validation.message}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <label for="inputCity">Country</label>
+                    <input type="text" class="form-control" placeholder="Country" formControlName="country" [ngClass]="{'is-invalid':tenantForm.get('country').errors && (tenantForm.get('country').dirty || tenantForm.get('country').touched) }">
+                    <div class="invalid-feedback" *ngFor="let validation of tenant_validation_messages.country">
+                        <div *ngIf="tenantForm.get('country').hasError(validation.type) && (tenantForm.get('country').dirty || tenantForm.get('country').touched)">
+                            {{validation.message}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <label for="inputState">City</label>
+                    <input type="text" class="form-control" formControlName="city" placeholder="City">
+                </div>
+                <div class="col-sm-3">
+                    <label for="inputPostalCode">Postal Code</label>
+                    <input type="text" class="form-control" formControlName="postalcode" placeholder="Postal Code">
+                </div>
+            </div>
+            <button type="submit" [disabled]="!tenantForm.valid" class="btn btn-primary px-4 float-right">Save</button>
+            <button type="button" class="btn btn-secondary px-4 float-right">Cancel</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+/* You can add global styles to this file, and also import other style files */
+
+* {
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+         border-radius: 0 !important;
+  }
+/* 
+textarea:hover,
+input:hover,
+select:hover,
+select:active,
+select:focus,
+textarea:active,
+input:active,
+textarea:focus,
+input:focus,
+button:focus,
+button:active,
+button:hover,
+label:focus,
+.btn:active,
+.btn.active {
+    outline:none !important;
+    -webkit-appearance:none;
+    box-shadow: none !important;
+    border: solid 1px #333 !important;
+    
+   } */
+
+button:focus,
+button:active,
+button:hover,
+.btn:active,
+.btn.active {
+    outline:none !important;
+    -webkit-appearance:none;
+    box-shadow: none !important;
+    
+   }
+   
+textarea:hover,
+input:hover,
+select:hover,
+select:active,
+select:focus,
+textarea:active,
+input:active,
+textarea:focus,
+input:focus
+ {
+    outline:none !important;
+    -webkit-appearance:none;
+    box-shadow: none !important;
+    border: solid 1px #333 !important;
+    
+   }
+
